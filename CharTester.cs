@@ -16,4 +16,9 @@ public sealed class CharTester
     {
         return (ch != ',') && (ch != '\n');
     }
+
+    public static bool commaOrCrlf(char ch)
+    {
+        return !notCommaNotCrlf(ch);
+    }
 }

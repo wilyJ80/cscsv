@@ -47,3 +47,5 @@ CR = %x0D ;as per section 6.1 of RFC 2234 [2]
 # Contributing
 
 - [ ] Add Escaped field support
+- [ ] Refactor getNextToken (it probably looks pretty bad): [Lexer.cs](./lexer/Lexer.cs)
+- [ ] Better property access choices

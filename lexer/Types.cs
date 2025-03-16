@@ -9,7 +9,7 @@ public enum TokenType
     MALFORMED_TOKEN
 }
 
-public enum isOther
+public enum IsOther
 {
     IS_OTHER,
     NOT_OTHER

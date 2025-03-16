@@ -1,10 +1,11 @@
 ﻿namespace cscsv;
 
+using cscsv.lexer;
+
 public sealed class Program
 {
     public static void Main(String[] args)
     {
-
         if (args.Length == 0)
         {
             Console.Error.WriteLine("Usage: dotnet run filename.csv");
@@ -13,16 +14,17 @@ public sealed class Program
 
         try
         {
-            using var reader = new StreamReader(args[0]);
-
-            while (reader.Peek() >= 0)
-            {
-                Console.Write((char)reader.Read());
-            }
+            var lexer = new Lexer(args[0]);
         }
-        catch (IOException e)
+        catch (FileNotFoundException e)
         {
-            Console.Error.WriteLine("Error: " + e.ToString());
+            Console.Error.WriteLine(e.Message);
+            return;
+        }
+        catch (Exception e)
+        {
+            Console.Error.WriteLine(e.Message);
+            return;
         }
     }
 }

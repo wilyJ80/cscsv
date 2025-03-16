@@ -5,9 +5,9 @@ public sealed class Token
     private TokenType tokenType { get; set; }
     private String? lexeme { get; set; }
 
-    public Token(TokenType tokenType, String lexeme)
+    public Token()
     {
-        this.tokenType = tokenType;
-        this.lexeme = lexeme;
+        this.tokenType = TokenType.NON_ACCEPTING;
+        this.lexeme = "";
     }
 }

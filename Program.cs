@@ -4,6 +4,27 @@ public sealed class Program
 {
     public static void Main(String[] args)
     {
-        Console.WriteLine("Hello, " + args[0]);
+
+        if (args.Length == 0)
+        {
+            Console.Error.WriteLine("Usage: dotnet run filename.csv");
+            return;
+        }
+
+        try
+        {
+            using var reader = new StreamReader(args[0]);
+            Int32 ch = reader.Read();
+            Console.WriteLine((char)ch);
+
+            while (reader.Peek() >= 0)
+            {
+                Console.Write((char)reader.Read());
+            }
+        }
+        catch (IOException e)
+        {
+            Console.Error.WriteLine("Error: " + e.ToString());
+        }
     }
 }

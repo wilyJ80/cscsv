@@ -6,7 +6,7 @@ public sealed class Program
 {
     public static void Main(String[] args)
     {
-        if (args.Length == 0)
+        if (args.Length != 1)
         {
             Console.Error.WriteLine("Usage: dotnet run filename.csv");
             return;
@@ -15,6 +15,11 @@ public sealed class Program
         try
         {
             var lexer = new Lexer(args[0]);
+
+            while (lexer.fileStillHasCharactersLeft())
+            {
+                // lex
+            }
         }
         catch (FileNotFoundException e)
         {

@@ -2,9 +2,9 @@ namespace cscsv.lexer;
 
 public sealed class Lexer
 {
-    private StreamReader reader;
-    private int lineCount;
-    private int currentState;
+    private StreamReader reader { get; set; }
+    private int lineCount { get; set; }
+    private int currentState { get; set; }
 
     public Lexer(String filepath)
     {
@@ -18,14 +18,14 @@ public sealed class Lexer
         this.currentState = 0;
     }
 
+    public bool fileStillHasCharactersLeft()
+    {
+        return reader.Peek() >= 0;
+    }
+
     public Token getNextToken()
     {
         var token = new Token();
-
-        while (reader.Peek() >= 0)
-        {
-            Console.Write((char)reader.Read());
-        }
 
         return token;
     }

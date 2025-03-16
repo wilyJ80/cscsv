@@ -1,4 +1,4 @@
-namespace cscsv;
+namespace cscsv.lexer;
 
 public sealed class Transition
 {

@@ -14,8 +14,6 @@ public sealed class Program
         try
         {
             using var reader = new StreamReader(args[0]);
-            Int32 ch = reader.Read();
-            Console.WriteLine((char)ch);
 
             while (reader.Peek() >= 0)
             {

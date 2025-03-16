@@ -22,7 +22,7 @@ public sealed class TransitionTable
                 new Transition(3, CharTester.notCommaNotCrlf, TokenType.NON_ACCEPTING),
             new Transition(4, CharTester.commaOrCrlf, TokenType.TEXTDATA)
             ],
-            // State 4
+            // State 4: accepting
             []
         ];
     }

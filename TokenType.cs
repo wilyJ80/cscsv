@@ -4,5 +4,6 @@ public enum TokenType
 {
     COMMA,
     TEXTDATA,
-    CRLF
+    CRLF,
+    MALFORMED_TOKEN
 }

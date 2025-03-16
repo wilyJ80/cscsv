@@ -28,7 +28,7 @@ CR = %x0D ;as per section 6.1 of RFC 2234 [2]
 
 ## Simplified grammar:
 
-![tokens](./doc/tokens.png)
+![tokens](./doc/tokens2.png)
 
 file = [header CRLF] record *(CRLF record) [CRLF]
 

@@ -5,6 +5,7 @@ public sealed class Lexer
     private StreamReader reader { get; set; }
     private int lineCount { get; set; }
     private int currentState { get; set; }
+    public Token currentToken { get; private set; }
 
     public Lexer(String filepath)
     {
@@ -16,6 +17,7 @@ public sealed class Lexer
         this.reader = new StreamReader(filepath);
         this.lineCount = 0;
         this.currentState = 0;
+        this.currentToken = new Token();
     }
 
     public bool fileStillHasCharactersLeft()
@@ -23,10 +25,13 @@ public sealed class Lexer
         return reader.Peek() >= 0;
     }
 
+    public void throwMalformedTokenException(String lexeme)
+    {
+        throw new Exception($"Malformed token on line {lineCount}: {lexeme}");
+    }
+
     public Token getNextToken()
     {
-        var token = new Token();
-
-        return token;
+        return this.currentToken;
     }
 }

@@ -18,7 +18,8 @@ public sealed class Program
 
             while (lexer.fileStillHasCharactersLeft())
             {
-                // lex
+                Token token = lexer.getNextToken();
+                // then print token.
             }
         }
         catch (FileNotFoundException e)

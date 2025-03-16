@@ -2,8 +2,8 @@ namespace cscsv.lexer;
 
 public sealed class Token
 {
-    private TokenType tokenType { get; set; }
-    private String? lexeme { get; set; }
+    public TokenType tokenType { get; set; }
+    public String? lexeme { get; set; }
 
     public Token()
     {

@@ -34,6 +34,7 @@ public sealed class Lexer
 
     public Token getNextToken()
     {
+        // Only peeking, not consuming
         Int32 ch = this.reader.Peek();
 
         if ((char)ch == '\n')
@@ -42,6 +43,7 @@ public sealed class Lexer
         }
 
         bool foundTransition = false;
+        bool shouldConsume = true;
 
         for (int possibleTransition = 0; possibleTransition < transitionTable.table[currentState].Length; possibleTransition++)
         {
@@ -52,6 +54,9 @@ public sealed class Lexer
 
                 bool tokenWasBuilt = false;
 
+                // handle tokenWasBuilt
+
+                // non accepting: keep building
                 if (currentToken.tokenType == TokenType.NON_ACCEPTING)
                 {
                     currentToken.lexeme += (char)ch;
@@ -59,6 +64,11 @@ public sealed class Lexer
                 else if (transitionTable.table[currentState][possibleTransition].isOther == IsOther.IS_OTHER && (char)ch != '\n')
                 {
                     // unread character back to stream: not possible with current logic. needs peeking instead of reading
+                    shouldConsume = false;
+                    tokenWasBuilt = true;
+                }
+                else
+                {
                     tokenWasBuilt = true;
                 }
 
@@ -77,6 +87,12 @@ public sealed class Lexer
             currentToken.lexeme += (char)ch;
             currentToken.tokenType = TokenType.MALFORMED_TOKEN;
             throwMalformedTokenException(currentToken);
+        }
+
+        // finally, consume for next iteration (there's no ungetc for streamReader, we had to peek instead)
+        if (shouldConsume)
+        {
+            this.reader.Read();
         }
     }
 }

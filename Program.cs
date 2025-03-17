@@ -19,7 +19,7 @@ public sealed class Program
             while (lexer.fileStillHasCharactersLeft())
             {
                 Token token = lexer.getNextToken();
-                // then print token.
+                Console.WriteLine(token.tokenType);
             }
         }
         catch (FileNotFoundException e)

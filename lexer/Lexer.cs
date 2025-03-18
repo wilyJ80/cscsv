@@ -37,6 +37,12 @@ public sealed class Lexer
         // Only peeking, not consuming
         Int32 ch = this.reader.Peek();
 
+        if (ch < 0)
+        {
+            currentToken.tokenType = TokenType.EOF;
+            return currentToken;
+        }
+
         if ((char)ch == '\n')
         {
             this.lineCount++;
@@ -94,5 +100,7 @@ public sealed class Lexer
         {
             this.reader.Read();
         }
+
+        throw new Exception("Error: no valid token type was found");
     }
 }

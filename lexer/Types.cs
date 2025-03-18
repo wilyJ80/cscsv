@@ -6,7 +6,8 @@ public enum TokenType
     TEXTDATA,
     CRLF,
     NON_ACCEPTING,
-    MALFORMED_TOKEN
+    MALFORMED_TOKEN,
+    EOF
 }
 
 public enum IsOther
